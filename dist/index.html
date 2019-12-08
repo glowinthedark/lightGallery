@@ -1,0 +1,39 @@
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="css/lightgallery.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+    <script src="js/lightgallery.min.js"></script>
+    <script src="js/lightgal_all.js"></script>
+</head>
+<body>
+<div id="lightgallery">
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $.ajax({
+            dataType: "json",
+            url: "assets.json",
+            success: function (data, status, xhr) {
+                $("#lightgallery").lightGallery({
+                    dynamic: true,
+                    dynamicEl: data,
+                    thumbnail: true,
+                    animateThumb: true,
+                    showThumbByDefault: true,
+                    mode: null,
+                    cssEasing: 'cubic-bezier(0.680, -0.550, 0.265, 1.550)',
+                    speed: 0,
+                    loop: false,
+                    preload: 3
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR, textStatus, errorThrown);
+            }
+        });
+    });
+</script>
+</body>
+</html>
